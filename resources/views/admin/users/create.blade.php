@@ -31,8 +31,8 @@
                             {!! Form::checkbox('is_active', 1, null ) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('avatar', 'Upload Profile Image', ['class' => 'col-lg-3 control-label']) !!}
-                            {!! Form::file('avatar', null, ['class'=>'form-control']); !!}
+                            {!! Form::label('photo_id', 'Upload Photos', ['class' => 'col-lg-3 control-label']) !!}
+                            {!! Form::file('photo_id', null, ['class'=>'form-control']); !!}
                         </div>
                         <!-- Submit Button -->
                         <div class="form-group">
@@ -43,7 +43,7 @@
                     {!! Form::close() !!}
            </div>
             <div class="col-sm-6">
-                @include('includes/create_form_error')
+                @include('includes/form_error')
             </div>
         </div>
     </div>

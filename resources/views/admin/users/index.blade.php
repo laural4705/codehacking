@@ -5,6 +5,7 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Name</th>
+            <th scope="col">Photo</th>
           <th scope="col">Email</th>
             <th scope="col">Role</th>
             <th scope="col">Status</th>
@@ -15,7 +16,8 @@
       <tbody>
       @foreach($users as $user)
         <tr>
-          <td>{{$user->name}}</td>
+            <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
+            <td><img height="50" src="{{$user->photo ? $user->photo->file : '../images/guest.jpg'}}" alt="" /></td>
           <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
             <td>{{$user->is_active==1 ? 'Active' : 'Not Active'}}</td>

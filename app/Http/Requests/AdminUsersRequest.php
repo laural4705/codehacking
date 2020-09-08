@@ -28,8 +28,7 @@ class AdminUsersRequest extends FormRequest
             'email'=>'required',
             'password'=>'required | min:6 | max:255',
             'role_id'=>'required',
-            'is_active',
-            'avatar'=>'max:10000|mimes:jpg,jpeg'
+            'photo_id'=>'max:10000|mimes:jpg,jpeg'
         ];
     }
 }
