@@ -28,3 +28,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/libs/styles.css'
     ], 'public/css/libs/app.css')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.browserSync({
+    proxy: 'codehacking'
+});

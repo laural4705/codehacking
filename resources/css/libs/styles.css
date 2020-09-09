@@ -11,9 +11,9 @@
 }
 
 .dropdown-user {
-    margin: 13px 0;
-    padding: 5px;
-    height: 100%;
+    margin: 0px 0;
+    padding: 0px;
+    height: 220%;
 }
 
 .dropdown-user:hover {

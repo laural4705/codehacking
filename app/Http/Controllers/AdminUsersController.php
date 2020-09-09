@@ -8,6 +8,7 @@ use App\Photo;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -18,7 +19,6 @@ class AdminUsersController extends Controller
      */
     public function index(User $user)
     {
-
         $users = $user->all();
         return view('admin.users.index', compact('users'));
     }
@@ -59,6 +59,7 @@ class AdminUsersController extends Controller
         User::create($input);
         //User::create($request->all());
         //return $adminUsersRequest->all();
+        Session::flash('created_user', 'User has been created.');
         return redirect('admin/users');
     }
 
@@ -102,14 +103,8 @@ class AdminUsersController extends Controller
         //return $request->all();
         //Find User
         $user = User::findOrFail($id);
-        if (trim($request->password=='')) {
-            $input=$request->except('password');
-        }
-        else {
-            $input = $request->all();
-            $input['password'] = bcrypt($request->password);
-        }
-        //How to collect checkbox value
+        $input = $request->all();
+        //How to collect checkbox value - moved to User
         $request->is_active ? $input['is_active'] = 1 : $input['is_active'] = 0;
         if($file = $request->file('photo_id')) {
             $name = time() . $file->getClientOriginalName();
@@ -119,6 +114,7 @@ class AdminUsersController extends Controller
             $input['photo_id'] = $photo->id;
         }
         $user->update($input);
+        Session::flash('updated_user', 'User has been updated.');
         return redirect('/admin/users');
         //return $request->all();
     }
@@ -131,6 +127,10 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFAil($id);
+        unlink(public_path() . $user->photo->file);
+        $user->delete();
+        Session::flash('deleted_user', 'User has been deleted.');
+        return redirect('admin/users');
     }
 }

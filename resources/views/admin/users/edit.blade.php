@@ -39,11 +39,17 @@
                     </div>
                     <!-- Submit Button -->
                     <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            {!! Form::submit('Update User Information', ['class' => 'btn btn-lg btn-info pull-right'] ) !!}
-                        </div>
+                        {!! Form::submit('Update User Information', ['class' => 'btn btn-lg btn-info pull-right'] ) !!}
                     </div>
+                {!! Form::close() !!}
+                <!-- Delete Form -->
+                @if($user->id !== Auth::id())
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+                        <div class="form-group">
+                            {!! Form::submit('Delete User', ['class' => 'btn btn-lg btn-danger pull-left']) !!}
+                        </div>
                     {!! Form::close() !!}
+                @endif
                 </div>
                 <div class="col-sm-6">
                     @include('includes/form_error')
