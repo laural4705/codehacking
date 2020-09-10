@@ -2,7 +2,7 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h4 class="m-0 font-weight-bold text-primary">Create Users</h4>
+            <h4 class="m-0 font-weight-bold text-primary">Create User</h4>
         </div>
         <div class="card-body">
             <div class="row ">
@@ -22,10 +22,7 @@
                             {!! Form::password('password',['class' => 'form-control', 'placeholder' => 'Password']) !!}
                         </div>
                         <!-- Select With One Default -->
-                        <div class="form-group">
-                            {!! Form::label('role_id', 'Role', ['class' => 'col-lg-2 control-label'] )  !!}
-                            {!!  Form::select('role_id', [''=>'Choose Role'] + $roles,  '3', ['class' => 'form-control' ]) !!}
-                        </div>
+
                         <div class="form-group">
                             {!! Form::label('is_active', 'Active', ['class' => 'col-lg-2 control-label']) !!}
                             {!! Form::checkbox('is_active', 1, null ) !!}

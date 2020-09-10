@@ -19,9 +19,9 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Name</th>
             <th scope="col">Photo</th>
-          <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
             <th scope="col">Role</th>
             <th scope="col">Status</th>
           <th scope="col">Created</th>
@@ -32,8 +32,8 @@
       @foreach($users as $user)
           @if($user->IsActive())
                 <tr @if($user->is_active != 1) class="danger" @else class="success" @endif>
-                    <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                     <td><img height="50" src="{{$user->photo ? $user->photo->file : '../images/guest.jpg'}}" alt="" /></td>
+                    <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                   <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
                     <td >{{$user->is_active==1 ? 'Active' : 'Not Active'}}</td>
@@ -49,8 +49,8 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Name</th>
             <th scope="col">Photo</th>
+            <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
             <th scope="col">Status</th>
@@ -62,8 +62,8 @@
             @foreach($users as $user)
                 @if(!$user->IsActive())
                     <tr @if($user->is_active != 1) class="danger" @else class="success" @endif>
-                        <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                         <td><img height="50" src="{{$user->photo ? $user->photo->file : '../images/guest.jpg'}}" alt="" /></td>
+                        <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->role->name}}</td>
                         <td >{{$user->is_active==1 ? 'Active' : 'Not Active'}}</td>
